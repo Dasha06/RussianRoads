@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+        x:Class="russianRoads.MainWindow"
+        Title="russianRoads">
+    <DockPanel Background="#ededed">
+        <!-- Верхняя панель -->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="LightGreen" Height="70">
+            <Ellipse Height="50" Width="50" Fill="Green" Margin="10,0" VerticalAlignment="Center"/>
+            <Border CornerRadius="10" Height="35" Width="400" Background="White" VerticalAlignment="Center">
+                <TextBlock Text="   Организационная структура" VerticalAlignment="Center"/>
+            </Border>
+        </StackPanel>
+        <!-- Основная область -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Левая часть: TreeView -->
+            <Border Grid.Column="0" Margin="20" Background="#e5e5e5" CornerRadius="5">
+                <TreeView Name="DepartmentsTree" 
+                          SelectionChanged="DepartmentsTree_SelectionChanged">
+                    <TreeView.ItemTemplate>
+                        <TreeDataTemplate x:CompileBindings="False" 
+                                          ItemsSource="{Binding Children}">
+                            <TextBlock Text="{Binding Name}"/>
+                        </TreeDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </Border>
+            <!-- Правая часть: карточки сотрудников -->
+            <Border Grid.Column="1" Margin="20" Background="#ededed" CornerRadius="5">
+                <Grid>
+                    <ListBox Name="EmployeeListBox">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:CompileBindings="False">
+                                <Border Background="#e3f7d6" CornerRadius="5" Margin="0,0,0,20" Padding="15">
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding DepartmentAndRole}"/>
+                                        <TextBlock FontWeight="Bold" FontSize="16" Text="{Binding FullName}"/>
+                                        <TextBlock Text="{Binding Phone}"/>
+                                        <TextBlock Text="{Binding Email}"/>
+                                        <TextBlock Text="{Binding Extra}"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <!-- Кнопка добавления -->
+                    <Button Content="+" Width="50" Height="50" FontSize="32" Background="#e3f7d6" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </DockPanel>
+</Window>
