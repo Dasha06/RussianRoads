@@ -1,0 +1,55 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
+        x:Class="russianRoads.ReportsWindow"
+        Title="Отчеты" Width="1000" Height="700">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="Отчеты по системе" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+            
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <Button Name="WorkersReportButton" Content="Отчет по сотрудникам" Click="WorkersReportButton_Click" Width="150"/>
+                <Button Name="HolidaysReportButton" Content="Отчет по отпускам" Click="HolidaysReportButton_Click" Width="150"/>
+                <Button Name="MissedReportButton" Content="Отчет по пропускам" Click="MissedReportButton_Click" Width="150"/>
+                <Button Name="LearningReportButton" Content="Отчет по обучению" Click="LearningReportButton_Click" Width="150"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Border Grid.Column="0" Background="#f5f5f5" CornerRadius="5" Padding="15">
+                <StackPanel>
+                    <TextBlock Text="Фильтры" FontWeight="Bold" Margin="0,0,0,15"/>
+                    
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="Период:" FontWeight="Bold"/>
+                        <DatePicker Name="StartDatePicker" Margin="0,5,0,0"/>
+                        <DatePicker Name="EndDatePicker" Margin="0,5,0,0"/>
+                        
+                        <TextBlock Text="Организация:" FontWeight="Bold" Margin="0,15,0,5"/>
+                        <ComboBox Name="OrganizationComboBox" Margin="0,5,0,0"/>
+                        
+                        <Button Name="ApplyFiltersButton" Content="Применить фильтры" 
+                                Click="ApplyFiltersButton_Click" Margin="0,20,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            
+            <Border Grid.Column="1" Background="White" CornerRadius="5" Margin="15,0,0,0">
+                <DataGrid Name="ReportDataGrid" AutoGenerateColumns="False" IsReadOnly="True">
+                </DataGrid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window> 

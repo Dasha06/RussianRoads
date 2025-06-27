@@ -1,0 +1,66 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="700"
+        x:Class="russianRoads.EmployeeEditWindow"
+        Title="Сотрудник" Width="600" Height="700">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="Данные сотрудника" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
+        
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Spacing="15">
+                <StackPanel>
+                    <TextBlock Text="ФИО *" FontWeight="Bold"/>
+                    <TextBox Name="FioTextBox" Margin="0,5,0,0"/>
+                </StackPanel>
+                
+                <StackPanel>
+                    <TextBlock Text="Должность" FontWeight="Bold"/>
+                    <ComboBox Name="PostComboBox" Margin="0,5,0,0"/>
+                </StackPanel>
+                
+                <StackPanel>
+                    <TextBlock Text="Рабочий телефон *" FontWeight="Bold"/>
+                    <MaskedTextBox  Mask="+7 (000) 000-00-00" Name="WorkPhoneTextBox" Margin="0,5,0,0"/>
+                </StackPanel>
+                
+                <StackPanel>
+                    <TextBlock Text="Личный телефон" FontWeight="Bold"/>
+                    <MaskedTextBox  Mask="+7 (000) 000-00-00" Name="PersonalPhoneTextBox" Margin="0,5,0,0"/>
+                </StackPanel>
+                
+                <StackPanel>
+                    <TextBlock Text="Email *" FontWeight="Bold"/>
+                    <TextBox Name="EmailTextBox" Margin="0,5,0,0"/>
+                </StackPanel>
+                
+                <StackPanel>
+                    <TextBlock Text="Дата рождения" FontWeight="Bold"/>
+                    <DatePicker Name="BirthdayDatePicker" Margin="0,5,0,0"/>
+                </StackPanel>
+                
+                <StackPanel>
+                    <TextBlock Text="Кабинет" FontWeight="Bold"/>
+                    <ComboBox Name="CabinetComboBox" Margin="0,5,0,0"/>
+                </StackPanel>
+                
+                <StackPanel>
+                    <TextBlock Text="Организация" FontWeight="Bold"/>
+                    <ComboBox Name="OrganizationComboBox" Margin="0,5,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+            <Button Name="SaveButton" Content="Сохранить" Width="100" Height="35" Margin="0,0,10,0" Click="SaveButton_Click"/>
+            <Button Name="CancelButton" Content="Отмена" Width="100" Height="35" Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window> 

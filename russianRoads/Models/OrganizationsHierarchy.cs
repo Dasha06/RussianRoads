@@ -20,4 +20,23 @@ public partial class OrganizationsHierarchy
     public virtual Subsuborganization? HierSubsuborgan { get; set; }
 
     public virtual ICollection<Worker> Workers { get; set; } = new List<Worker>();
+
+    public string DisplayName
+    {
+        get
+        {
+            var parts = new List<string>();
+            
+            if (HierOrgan != null)
+                parts.Add(HierOrgan.OrganName);
+            
+            if (HierSuborgan != null && HierSuborgan.SuborganName != "нет подорганизации")
+                parts.Add(HierSuborgan.SuborganName);
+            
+            if (HierSubsuborgan != null && HierSubsuborgan.SubsuborganName != "нет подподорганизации")
+                parts.Add(HierSubsuborgan.SubsuborganName);
+            
+            return string.Join(" / ", parts);
+        }
+    }
 }

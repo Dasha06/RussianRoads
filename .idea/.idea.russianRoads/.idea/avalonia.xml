@@ -3,6 +3,11 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="russianRoads/Classes/EmployeeCalendarWindow.axaml" value="russianRoads/russianRoads.csproj" />
+        <entry key="russianRoads/Classes/EmployeeEditWindow.axaml" value="russianRoads/russianRoads.csproj" />
+        <entry key="russianRoads/Classes/ReportsWindow.axaml" value="russianRoads/russianRoads.csproj" />
+        <entry key="russianRoads/EmployeeCalendarWindow.axaml" value="russianRoads/russianRoads.csproj" />
+        <entry key="russianRoads/EmployeeEditWindow.axaml" value="russianRoads/russianRoads.csproj" />
         <entry key="russianRoads/MainWindow.axaml" value="russianRoads/russianRoads.csproj" />
       </map>
     </option>

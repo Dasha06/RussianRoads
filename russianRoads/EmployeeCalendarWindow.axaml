@@ -1,0 +1,74 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        x:Class="russianRoads.EmployeeCalendarWindow"
+        Title="Календарь сотрудника" Width="800" Height="600" x:CompileBindings="False">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Name="EmployeeNameText" Text="Календарь сотрудника" FontSize="20" FontWeight="Bold"/>
+            <TextBlock Name="EmployeeInfoText" Text="" FontSize="14" Foreground="Gray" Margin="0,5,0,0"/>
+        </StackPanel>
+        
+        <TabControl Grid.Row="1">
+            
+            <TabItem Header="Отпуска">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <DataGrid Grid.Row="1" Name="HolidaysDataGrid" AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Начало" Binding="{Binding CalenholidayDateStart, StringFormat=dd.MM.yyyy}"/>
+                            <DataGridTextColumn Header="Конец" Binding="{Binding CalenholidayDateEnd, StringFormat=dd.MM.yyyy}"/>
+                            <DataGridTextColumn Header="Дней" Binding="{Binding DaysCount}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Пропуски">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <DataGrid Grid.Row="1" Name="MissedDataGrid" AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Дата" Binding="{Binding CalenmissDate, StringFormat=dd.MM.yyyy}"/>
+                            <DataGridTextColumn Header="Отсутствовал" Binding="{Binding WorkerMissed.WorkerFio}"/>
+                            <DataGridTextColumn Header="Заменял" Binding="{Binding WorkerReplaced.WorkerFio}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Обучение">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <DataGrid Grid.Row="1" Name="LearningDataGrid" AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Событие" Binding="{Binding CalenlearnEvent.LearneventName}"/>
+                            <DataGridTextColumn Header="Начало" Binding="{Binding CalenlearnDateStart, StringFormat=dd.MM.yyyy}"/>
+                            <DataGridTextColumn Header="Конец" Binding="{Binding CalenlearnDateEnd, StringFormat=dd.MM.yyyy}"/>
+                            <DataGridTextColumn Header="Описание" Binding="{Binding CalenlearnEvent.LearneventDescription}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window> 
